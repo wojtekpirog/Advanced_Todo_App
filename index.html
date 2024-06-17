@@ -3,9 +3,66 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css">
   <title>Document</title>
+  <script src="https://kit.fontawesome.com/7aa1ebf341.js" crossorigin="anonymous"></script>
 </head>
 <body>
-  
+  <!-- App wrapper -->
+  <div class="app-container">
+    <!-- Wrapper -->
+    <div class="content-wrapper">
+      <!-- Header -->
+      <h1>Exchange Rate App</h1>
+      <p>Sprawdź aktualne kursy walut!</p>
+      <!-- Header -->
+      <!-- Form box -->
+      <div class="form-box">
+        <!-- Left section -->
+        <div class="left-section">
+          <!-- Left currency options -->
+          <input type="number" class="amount-one" min="1" value="1" step="1" required/>
+          <select id="currency-one">
+            <option value="PLN" selected>PLN</option>
+            <option value="USD">USD</option>
+            <option value="EUR">EUR</option>
+            <option value="GBP">GBP</option>
+            <option value="CHF">CHF</option>
+          </select>
+          <!-- Left currency options -->
+        </div>
+        <!-- Left section -->
+        <!-- Swap button -->
+        <button type="button" class="swap-btn"><i class="fa-solid fa-retweet"></i></button> 
+        <!-- Swap button -->
+        <!-- Right section -->
+        <div class="right-section">
+          <!-- Right currency options -->
+          <input type="number" class="amount-two" min="1" value="1" step="1" required/>
+          <select id="currency-two">
+            <option value="PLN">PLN</option>
+            <option value="USD" selected>USD</option>
+            <option value="EUR">EUR</option>
+            <option value="GBP">GBP</option>
+            <option value="CHF">CHF</option>
+          </select>
+          <!-- Right currency options -->
+        </div> 
+        <!-- Right section -->
+      </div> 
+      <!-- Form box -->
+      <!-- Rate info -->
+      <p class="rate-info">Lorem ipsum dolor sit amet.</p> 
+      <!-- Rate info -->
+    </div> 
+    <!-- Wrapper -->
+    <!-- Footer -->
+    <footer class="footer">
+      <small>&copy; 2024 Xchange.com</small>
+    </footer>
+    <!-- Footer -->
+  </div>
+  <!-- App wrapper -->
+  <script src="script.js"></script>
 </body>
 </html>
