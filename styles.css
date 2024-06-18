@@ -44,3 +44,91 @@ body {
   left: 50%;
   transform: translate(-50%, -50%);
 }
+
+.content-wrapper {
+  padding: 2em;
+  border: 2px solid #1C232D;
+  border-radius: 15px;
+  background-image: linear-gradient(#3F4859, #333D46);
+  color: #FFF;
+  text-align: center;
+  box-shadow: 0 0 15px #1C232D;
+}
+
+.content-wrapper > h1 {
+  margin-bottom: .5em;
+  font-size: 3.6rem;
+}
+
+.content-wrapper > p {
+  margin-bottom: 1.5em;
+  font-size: 2.4rem;
+  font-weight: 200;
+}
+
+.form-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.left-section, .right-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.form-box input {
+  width: 250px;
+  margin-bottom: .5em;
+  font-size: 4.2rem;
+}
+
+.form-box input, .form-box select {
+  background-color: transparent;
+  color: #FFF;
+  border: 2px solid transparent;
+  border-radius: 4px;
+  font-family: "Lato", sans-serif;
+  text-align: center;
+}
+
+.form-box select {
+  padding: .25em .5em;
+  font-size: 2.8rem;
+  cursor: pointer;
+}
+
+.form-box option {
+  color: #1C232D;
+  font-size: 2rem;
+}
+
+.form-box input:focus, .form-box select:focus {
+  outline: none;
+  border: 2px solid #000;
+}
+
+.swap-btn {
+  align-self: center;
+  padding: 1em 2em;
+  border: none;
+  border-radius: 4px;
+  background-image: linear-gradient(45deg, #2B89E7, #11E763);
+  font-size: 2rem;
+  cursor: pointer;
+}
+
+.swap-btn:focus, .swap-btn:hover {
+  background: linear-gradient(45deg, #317FCC, #1FC06A);
+}
+
+.swap-btn:focus {
+  outline: none;
+  color: #FFF;
+}
+
+.content-wrapper > p.rate-info {
+  margin-top: 1.5em;
+  margin-bottom: 0;
+}
