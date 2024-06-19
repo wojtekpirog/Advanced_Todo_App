@@ -3,6 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Albert+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
   <title>Document</title>
   <script src="https://kit.fontawesome.com/7aa1ebf341.js" crossorigin="anonymous"></script>
@@ -11,11 +14,33 @@
   <!-- App wrapper -->
   <div class="app-container">
     <!-- Wrapper -->
-    <div class="content-wrapper"></div> 
+    <div class="content-wrapper">
+      <!-- Header -->
+      <h1>Task List <span class="year"></span></h1>
+      <!-- Header -->
+      <!-- Input container -->
+      <form class="add-task">
+        <input type="text" placeholder="What would you like to do?" required />
+        <button type="button"><i class="fa-solid fa-plus"></i> Add task</button>
+      </form> 
+      <!-- Input container -->
+      <!-- Tasks section header -->
+      <h2>Tasks</h2> 
+      <!-- Tasks section header -->
+      <!-- Task container -->
+      <div class="tasks-container">
+        <!-- Task -->
+        <div class="task">
+          
+        </div> 
+        <!-- Task -->
+      </div> 
+      <!-- Task container -->
+    </div> 
     <!-- Wrapper -->
     <!-- Footer -->
-    <footer class="footer">
-      <small>&copy; 2024 Voytasks.com</small>
+    <footer>
+      <small>&copy; <span class="year"></span> Voytasks.com</small>
     </footer>
     <!-- Footer -->
   </div>

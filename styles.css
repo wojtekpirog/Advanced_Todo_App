@@ -1,5 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Lato:wght@200;400;700&display=swap');
-
 *, 
 *::before, 
 *::after {
@@ -17,9 +15,9 @@
 }
 
 body {
-  font-family: 'Lato', sans-serif;
+  font-family: "Albert Sans", sans-serif;
   font-size: 1.6rem;
-  background-color: #29303B;
+  background-color: #10002B;
 }
 
 .app-container {
@@ -30,14 +28,14 @@ body {
   position: relative;
 }
 
-.app-container > .footer {
+.app-container > footer {
   width: 100%;
   height: 5em;
   position: absolute;
   bottom: 0;
 }
 
-.app-container > .footer > small {
+.app-container > footer > small {
   color: white;
   position: absolute;
   top: 50%;
@@ -46,11 +44,73 @@ body {
 }
 
 .content-wrapper {
+  width: 800px;
   padding: 2em;
-  border: 2px solid #1C232D;
-  border-radius: 15px;
-  background-image: linear-gradient(#3F4859, #333D46);
+  border: 2px solid #5A189A;
+  border-radius: 8px;
+  background-color: #240046;
   color: #FFF;
   text-align: center;
-  box-shadow: 0 0 15px #1C232D;
+}
+
+.content-wrapper h1, 
+.content-wrapper h2 {
+  color: #9D4EDD;
+  font-weight: 300;
+  text-align: start;  
+  margin-bottom: .5em;
+}
+
+.content-wrapper > h1 {
+  font-size: 4.8rem;
+}
+
+.content-wrapper > form {
+  margin-bottom: 2em;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+
+.content-wrapper > form > input,
+.content-wrapper > form > button {
+  padding: .75em;  
+  background: none;
+  border-radius: 8px;
+  font-size: 1.6rem;
+  font-family: "Albert Sans", sans-serif;
+}
+
+.content-wrapper > form > input {
+  flex: 1;
+  border: 2px solid #5A189A;
+  color: #FFF;
+}
+
+.content-wrapper > form > button {
+  border: 2px solid transparent;
+  color: #9D4EDD;
+  font-weight: 600;
+  font-size: 1.8rem;
+  cursor: pointer;
+  transition: color 200ms;
+}
+
+.content-wrapper > form > input:focus,
+.content-wrapper > form > button:focus {
+  outline: none;
+  border-color: #E0AAFF;
+}
+
+.content-wrapper > form > button:hover {
+  color: #E0AAFF;
+}
+
+.content-wrapper i {
+  margin-right: 4px;
+}
+
+.content-wrapper h2 {
+  font-size: 3.2rem;
 }
