@@ -16,37 +16,32 @@
       <h1>Exchange Rate App</h1>
       <p>Sprawdź aktualne kursy walut!</p>
       <!-- Header -->
-      <!-- Form box -->
-      <form class="form-box">
-        <!-- Left section -->
-        <div class="left-section">
-          <!-- Left currency options -->
-          <input type="number" class="amount-one" min="1" value="1" step="1" required/>
-          <select id="currency-one">
-            <option value="PLN" selected>PLN</option>
-            <option value="USD">USD</option>
-            <option value="EUR">EUR</option>
-            <option value="GBP">GBP</option>
-            <option value="CHF">CHF</option>
-          </select>
-          <!-- Left currency options -->
-        </div>
-        <!-- Left section -->
-        <!-- Swap button -->
-        <button type="button" class="swap-btn"><i class="fa-solid fa-retweet"></i></button> 
-        <!-- Swap button -->
-        <!-- Right section -->
-        <div class="right-section">
-          <!-- Right currency options -->
-          <input type="number" class="amount-two" min="1" value="1" step="1" disabled/>
-          <select id="currency-two">
-            <option value="PLN">PLN</option>
-            <option value="USD" selected>USD</option>
-            <option value="EUR">EUR</option>
-            <option value="GBP">GBP</option>
-            <option value="CHF">CHF</option>
-          </select>
-          <!-- Right currency options -->
+      <!-- Input container -->
+      <form class="add-task">
+        <input type="text" placeholder="What would you like to do?" required />
+        <button type="button"><i class="fa-solid fa-plus"></i> Add task</button>
+      </form> 
+      <!-- Input container -->
+      <!-- Error message -->
+      <p class="error-message">No tasks on the list!</p> 
+      <!-- Error message -->
+      <!-- Tasks section header -->
+      <h2>Tasks</h2> 
+      <!-- Tasks section header -->
+      <!-- Task container -->
+      <div class="tasks-container">
+        <!-- Task -->
+        <div class="task">
+          <!-- Text -->
+          <p class="task-text">Build a task app in 2024</p> 
+          <!-- Text -->
+          <!-- Buttons -->
+          <div class="task-buttons">
+            <button type="button" class="task-button"><i class="fa-solid fa-check"></i></button>
+            <button type="button" class="task-button"><i class="fa-solid fa-pen"></i></button>
+            <button type="button" class="task-button"><i class="fa-solid fa-trash-alt"></i></button>
+          </div> 
+          <!-- Buttons -->
         </div> 
         <!-- Right section -->
       </form>
@@ -56,6 +51,31 @@
       <!-- Rate info -->
     </div> 
     <!-- Wrapper -->
+    <!-- Modal shadow -->
+    <div class="task-modal task-modal__shadow">
+      <!-- Modal content -->
+      <div class="task-modal__box">
+        <!-- Modal header -->
+        <h3 class="task-modal__title">Edit task</h3>
+        <!-- Modal header -->
+        <!-- Error message -->
+        <p class="error-message">Don't forget to put a task name</p> 
+        <!-- Error message -->
+        <!-- Modal body -->
+        <form class="task-modal__form">
+          <input type="text" class="task-modal__input" placeholder="What would you like to do?" required />
+          <!-- Buttons -->
+          <div class="task-modal__buttons">
+            <button type="button" class="task-modal__button"><i class="fa-solid fa-check"></i> Accept</button>
+            <button type="button" class="task-modal__button"><i class="fa-solid fa-xmark"></i> Cancel</button>
+          </div> 
+          <!-- Buttons -->
+        </form> 
+        <!-- Modal body -->
+      </div>
+      <!-- Modal content -->
+    </div> 
+    <!-- Modal shadow -->
     <!-- Footer -->
     <footer class="footer">
       <small>&copy; 2024 Xchange.com</small>
