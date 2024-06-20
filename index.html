@@ -24,6 +24,9 @@
         <button type="button"><i class="fa-solid fa-plus"></i> Add task</button>
       </form> 
       <!-- Input container -->
+      <!-- Error message -->
+      <p class="error-message">No tasks on the list!</p> 
+      <!-- Error message -->
       <!-- Tasks section header -->
       <h2>Tasks</h2> 
       <!-- Tasks section header -->
@@ -31,13 +34,47 @@
       <div class="tasks-container">
         <!-- Task -->
         <div class="task">
-          
+          <!-- Text -->
+          <p class="task-text">Build a task app in 2024</p> 
+          <!-- Text -->
+          <!-- Buttons -->
+          <div class="task-buttons">
+            <button type="button" class="task-button"><i class="fa-solid fa-check"></i></button>
+            <button type="button" class="task-button"><i class="fa-solid fa-pen"></i></button>
+            <button type="button" class="task-button"><i class="fa-solid fa-trash-alt"></i></button>
+          </div> 
+          <!-- Buttons -->
         </div> 
         <!-- Task -->
       </div> 
       <!-- Task container -->
     </div> 
     <!-- Wrapper -->
+    <!-- Modal shadow -->
+    <div class="task-modal task-modal__shadow">
+      <!-- Modal content -->
+      <div class="task-modal__box">
+        <!-- Modal header -->
+        <h3 class="task-modal__title">Edit task</h3>
+        <!-- Modal header -->
+        <!-- Error message -->
+        <p class="error-message">Don't forget to put a task name</p> 
+        <!-- Error message -->
+        <!-- Modal body -->
+        <form class="task-modal__form">
+          <input type="text" class="task-modal__input" placeholder="What would you like to do?" required />
+          <!-- Buttons -->
+          <div class="task-modal__buttons">
+            <button type="button" class="task-modal__button"><i class="fa-solid fa-check"></i> Accept</button>
+            <button type="button" class="task-modal__button"><i class="fa-solid fa-xmark"></i> Cancel</button>
+          </div> 
+          <!-- Buttons -->
+        </form> 
+        <!-- Modal body -->
+      </div>
+      <!-- Modal content -->
+    </div> 
+    <!-- Modal shadow -->
     <!-- Footer -->
     <footer>
       <small>&copy; <span class="year"></span> Voytasks.com</small>
