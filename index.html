@@ -20,7 +20,7 @@
       <!-- Header -->
       <!-- Input container -->
       <form class="add-task">
-        <input type="text" placeholder="What would you like to do?" required />
+        <input type="text" placeholder="What would you like to do?" minlength="3" maxlength="50" required />
         <button type="button"><i class="fa-solid fa-plus"></i> Add task</button>
       </form> 
       <!-- Input container -->
@@ -33,7 +33,7 @@
       <!-- Task container -->
       <div class="tasks-container">
         <!-- Task -->
-        <div class="task">
+        <template class="task-template">
           <!-- Text -->
           <p class="task-text">Build a task app in 2024</p> 
           <!-- Text -->
@@ -44,7 +44,7 @@
             <button type="button" class="task-button"><i class="fa-solid fa-trash-alt"></i></button>
           </div> 
           <!-- Buttons -->
-        </div> 
+        </template> 
         <!-- Task -->
       </div> 
       <!-- Task container -->
