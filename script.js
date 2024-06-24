@@ -5,6 +5,8 @@ let taskNameInput;
 let addTaskButton;
 let errorText;
 let taskTemplate;
+let deleteAllButton;
+// Task edition modal
 let taskModal;
 
 // Zmienna globalna, która przechowuje id zadania:
@@ -24,6 +26,7 @@ const getElements = () => {
   addTaskButton = document.querySelector(".add-task > button");
   errorText = document.querySelector(".error-message");
   taskTemplate = document.querySelector(".task-template");
+  deleteAllButton = document.querySelector(".delete-all-tasks-button");
   taskModal = document.querySelector(".task-modal");
 }
 
@@ -31,17 +34,18 @@ const addListeners = () => {
   tasksContainer.addEventListener("click", checkClick);
   addTaskButton.addEventListener("click", addTask);
   taskNameInput.addEventListener("keydown", enterCheck);
+  deleteAllButton.addEventListener("click", deleteAllTasks);
 }
 
 const addTask = () => {
   const taskName = taskNameInput.value;
 
   if (!taskName) {
-    displayError("Don't forget to put a task name!");
+    displayError("Don't forget to put a task name!", taskNameInput, errorText);
   } else if (taskName.length < taskNameInput.minLength || taskName.length > taskNameInput.maxLength) {
-    displayError(`Task name must be between ${taskNameInput.minLength} and ${taskNameInput.maxLength} characters!`);
+    displayError(`Task name must be between ${taskNameInput.minLength} and ${taskNameInput.maxLength} characters!`, taskNameInput, errorText);
   } else {
-    clearError();
+    clearError(taskNameInput, errorText);
     createTask(taskName);
   }
 }
@@ -63,6 +67,7 @@ const createTask = (taskName) => {
   tasksContainer.appendChild(newTask);
 
   taskNameInput.value = "";
+  deleteAllButton.style.display = "block";
 }
 
 const enterCheck = (event) => {
@@ -79,6 +84,7 @@ const checkClick = (event) => {
     if (event.target.closest("button").classList.contains("task-button--complete")) {
       toggleTaskStatus(event);
     } else if (event.target.closest("button").classList.contains("task-button--edit")) {
+      openModal(event);
       console.log("Odpalam modal!");
     } else if (event.target.closest("button").classList.contains("task-button--delete")) {
       deleteTask(event);
@@ -95,31 +101,64 @@ const toggleTaskStatus = (event) => {
     : event.target.closest("button").innerHTML = '<i class="fa-solid fa-check" aria-hidden="true"></i>';
 }
 
+// const editTask = (event) => {
+
+// }
+
 const deleteTask = (event) => {
   const task = event.target.closest(".task");
   tasksContainer.removeChild(task);
 
-  console.log(tasksContainer.innerHTML);
+  if (tasksContainer.innerHTML === "") {
+    errorText.style.display = "block";
+    errorText.textContent = "No tasks on the list!";
+    deleteAllButton.style.display = "none";
+  }
 }
 
-const displayError = (errorMessage) => {
-  taskNameInput.style.borderColor = "#bc4749";
+const deleteAllTasks = () => {
+  tasksContainer.innerHTML = "";
   errorText.style.display = "block";
-  errorText.textContent = errorMessage;
+  errorText.textContent = "No tasks on the list!";
+  deleteAllButton.style.display = "none";
 }
 
-const clearError = () => {
-  taskNameInput.style.borderColor = "#9D4EDD";
-  errorText.textContent = "";
-  errorText.style.display = "none";
+const displayError = (errorMessage, input, error) => {
+  input.style.borderColor = "#bc4749";
+  error.style.display = "block";
+  error.textContent = errorMessage;
 }
 
-const openModal = () => {
+const clearError = (input, error) => {
+  input.style.borderColor = "#9D4EDD";
+  error.textContent = "";
+  error.style.display = "none";
+}
+
+const openModal = (event) => {
   taskModal.classList.add("task-modal--active");
+
+  taskModal.querySelector(".task-modal__button--accept").addEventListener("click", (event) => editTask(event));
+  taskModal.querySelector(".task-modal__button--cancel").addEventListener("click", closeModal);
+}
+
+const editTask = (event) => {
+  const taskModalInput = taskModal.querySelector(".task-modal__input");
+  const taskModalError = taskModal.querySelector(".error-message");
+  const newTaskName = taskModalInput.value;
+  
+  if (!newTaskName) {
+    displayError("Don't forget to put a task name!", taskModalInput, taskModalError);
+  } else if (newTaskName.length < taskModalInput.minLength || newTaskName.length > taskModalInput.maxLength) {
+    displayError(`Task name must be between ${taskModalInput.minLength} and ${taskModalInput.maxLength} characters!`, taskModalInput, taskModalError);
+  } else {
+    clearError(taskModalInput, taskModalError);
+    console.log(event.target);
+  }
 }
 
 const closeModal = () => {
-  taskModal.classList.add("task-modal--active");
+  taskModal.classList.remove("task-modal--active");
 }
 
 const setCurrentYear = () => {

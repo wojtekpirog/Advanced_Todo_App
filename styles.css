@@ -93,7 +93,8 @@ body {
   font-family: "Albert Sans", sans-serif;
 }
 
-.content-wrapper > form > input {
+.content-wrapper > form > input,
+.task-modal__input {
   flex: 1;
   color: #FFF;
   border: 2px solid #9D4EDD;
@@ -148,6 +149,7 @@ body {
 }
 
 .task-button,
+.delete-all-tasks-button,
 .task-modal__button {
   margin-right: 10px;
   padding: .5em;
@@ -157,6 +159,25 @@ body {
   font-weight: 600;
   font-size: 1.6rem;
   cursor: pointer;
+}
+
+.delete-all-tasks-button {
+  margin-top: 1em;
+  display: none;
+  color: #bc4749;
+  font-weight: 400;
+  font-size: 1.8rem;
+  font-family: "Albert Sans", sans-serif;
+  transition: color 200ms ease-in;
+}
+
+.delete-all-tasks-button:hover {
+  color: #772526;
+}
+
+.delete-all-tasks-button:focus {
+  outline: none;
+  border-color: #772526;
 }
 
 .task-button:last-child {
@@ -215,7 +236,6 @@ body {
 .task-modal__input {
   width: 100%;
   margin-bottom: 2em;
-  border: 2px solid #5A189A;
 }
 
 .task-modal__buttons {

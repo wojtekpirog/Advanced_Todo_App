@@ -33,6 +33,9 @@
       <!-- Task container -->
       <ul class="tasks-container"></ul> 
       <!-- Task container -->
+      <!-- Delete all tasks button -->
+      <button type="button" class="delete-all-tasks-button"><i class="fa-solid fa-trash"></i> Delete all</button> 
+      <!-- Delete all tasks button -->
     </div> 
     <!-- Wrapper -->
     <!-- Modal shadow -->
@@ -42,16 +45,16 @@
         <!-- Modal header -->
         <h3 class="task-modal__title">Edit task</h3>
         <!-- Modal header -->
-        <!-- Error message -->
-        <p class="error-message">Don't forget to put a task name</p> 
-        <!-- Error message -->
         <!-- Modal body -->
         <form class="task-modal__form">
-          <input type="text" class="task-modal__input" placeholder="What would you like to do?" required />
+          <input type="text" class="task-modal__input" placeholder="What would you like to do?" minlength="3" maxlength="50" required />
+          <!-- Error message -->
+          <p class="error-message"></p>
+          <!-- Error message -->
           <!-- Buttons -->
           <div class="task-modal__buttons">
-            <button type="button" class="task-modal__button"><i class="fa-solid fa-check"></i> Accept</button>
-            <button type="button" class="task-modal__button"><i class="fa-solid fa-xmark"></i> Cancel</button>
+            <button type="button" class="task-modal__button task-modal__button--accept"><i class="fa-solid fa-check"></i> Accept</button>
+            <button type="button" class="task-modal__button task-modal__button--cancel"><i class="fa-solid fa-xmark"></i> Cancel</button>
           </div> 
           <!-- Buttons -->
         </form> 
