@@ -31,22 +31,7 @@
       <h2>Tasks</h2> 
       <!-- Tasks section header -->
       <!-- Task container -->
-      <div class="tasks-container">
-        <!-- Task -->
-        <template class="task-template">
-          <!-- Text -->
-          <p class="task-text">Build a task app in 2024</p> 
-          <!-- Text -->
-          <!-- Buttons -->
-          <div class="task-buttons">
-            <button type="button" class="task-button"><i class="fa-solid fa-check"></i></button>
-            <button type="button" class="task-button"><i class="fa-solid fa-pen"></i></button>
-            <button type="button" class="task-button"><i class="fa-solid fa-trash-alt"></i></button>
-          </div> 
-          <!-- Buttons -->
-        </template> 
-        <!-- Task -->
-      </div> 
+      <ul class="tasks-container"></ul> 
       <!-- Task container -->
     </div> 
     <!-- Wrapper -->
@@ -75,6 +60,20 @@
       <!-- Modal content -->
     </div> 
     <!-- Modal shadow -->
+    <!-- Tasks template -->
+    <template class="task-template">
+      <!-- Text -->
+      <p class="task-text"></p> 
+      <!-- Text -->
+      <!-- Buttons -->
+      <div class="task-buttons">
+        <button type="button" class="task-button task-button--complete"><i class="fa-solid fa-check"></i></button>
+        <button type="button" class="task-button task-button--edit"><i class="fa-solid fa-pen"></i></button>
+        <button type="button" class="task-button task-button--delete"><i class="fa-solid fa-trash-alt"></i></button>
+      </div> 
+      <!-- Buttons -->
+    </template> 
+    <!-- Tasks template --> 
     <!-- Footer -->
     <footer>
       <small>&copy; <span class="year"></span> Voytasks.com</small>

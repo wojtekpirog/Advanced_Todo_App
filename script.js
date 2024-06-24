@@ -28,6 +28,7 @@ const getElements = () => {
 }
 
 const addListeners = () => {
+  tasksContainer.addEventListener("click", checkClick);
   addTaskButton.addEventListener("click", addTask);
   taskNameInput.addEventListener("keydown", enterCheck);
 }
@@ -50,7 +51,7 @@ const addTask = () => {
 const createTask = (taskName) => {
   taskID += 1;
 
-  const newTask = document.createElement("div");
+  const newTask = document.createElement("li");
   newTask.setAttribute("id", taskID);
   newTask.classList.add("task");
 
@@ -65,11 +66,40 @@ const createTask = (taskName) => {
 }
 
 const enterCheck = (event) => {
-  console.log(`KeyboardEvent: key = ${event.key} | code = ${event.code} | keyCode = ${event.keyCode}`);
   if (event.code === "Enter") {
     event.preventDefault();
     addTask();
   }
+}
+
+const checkClick = (event) => {
+  // Jeśli `event.target` ma jakieś klasy:
+  if (event.target.classList.value !== "") {
+    // Sprawdzenie, czy najbliższy element `button` ma klasę "completed":
+    if (event.target.closest("button").classList.contains("task-button--complete")) {
+      toggleTaskStatus(event);
+    } else if (event.target.closest("button").classList.contains("task-button--edit")) {
+      console.log("Odpalam modal!");
+    } else if (event.target.closest("button").classList.contains("task-button--delete")) {
+      deleteTask(event);
+    }
+  }
+}
+
+const toggleTaskStatus = (event) => {
+  const taskText = event.target.closest(".task").querySelector(".task-text");
+  taskText.classList.toggle("task-text--completed");
+
+  taskText.classList.contains("task-text--completed") 
+    ? event.target.closest("button").innerHTML = '<i class="fa-solid fa-rotate-left" aria-hidden="true"></i>' 
+    : event.target.closest("button").innerHTML = '<i class="fa-solid fa-check" aria-hidden="true"></i>';
+}
+
+const deleteTask = (event) => {
+  const task = event.target.closest(".task");
+  tasksContainer.removeChild(task);
+
+  console.log(tasksContainer.innerHTML);
 }
 
 const displayError = (errorMessage) => {
