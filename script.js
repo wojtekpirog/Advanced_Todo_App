@@ -1,16 +1,25 @@
+// Header & footer
 let appHeader;
 let footerYear;
+// Tasks container
 let tasksContainer;
 let taskNameInput;
 let addTaskButton;
 let errorText;
-let taskTemplate;
 let deleteAllButton;
+// Task template
+let taskTemplate;
 // Task edition modal
 let taskModal;
+let taskModalInput;
+let taskModalErrorText;
+let editTaskBtn;
+let closeModalBtn;
 
 // Zmienna globalna, która przechowuje id zadania:
 let taskID = 0;
+// Zmienna globalna, która przechowuje edytowane zadanie:
+let taskToEdit;
 
 const main = () => {
   getElements();
@@ -19,22 +28,35 @@ const main = () => {
 }
 
 const getElements = () => {
+  // Header & footer
   appHeader = document.querySelector(".content-wrapper span");
   footerYear = document.querySelector("footer span");
+  // Tasks container
   tasksContainer = document.querySelector(".tasks-container");
   taskNameInput = document.querySelector(".add-task > input");
   addTaskButton = document.querySelector(".add-task > button");
   errorText = document.querySelector(".error-message");
-  taskTemplate = document.querySelector(".task-template");
   deleteAllButton = document.querySelector(".delete-all-tasks-button");
+  // Task template
+  taskTemplate = document.querySelector(".task-template");
+  // Task edition modal
   taskModal = document.querySelector(".task-modal");
+  taskModalInput = taskModal.querySelector(".task-modal__input");
+  taskModalErrorText = taskModal.querySelector(".error-message");
+  editTaskBtn = taskModal.querySelector(".task-modal__button--accept");
+  closeModalBtn = taskModal.querySelector(".task-modal__button--cancel");
 }
 
 const addListeners = () => {
+  // Tasks container
   tasksContainer.addEventListener("click", checkClick);
   addTaskButton.addEventListener("click", addTask);
   taskNameInput.addEventListener("keydown", enterCheck);
   deleteAllButton.addEventListener("click", deleteAllTasks);
+  // Task edition modal
+  taskModalInput.addEventListener("keydown", enterCheck);
+  editTaskBtn.addEventListener("click", changeTodo);
+  closeModalBtn.addEventListener("click", closeModal);
 }
 
 const addTask = () => {
@@ -49,8 +71,6 @@ const addTask = () => {
     createTask(taskName);
   }
 }
-
-// Funkcja tworząca zadanie (nie musi nawet przyjmować parametru z ID):
 
 const createTask = (taskName) => {
   taskID += 1;
@@ -72,20 +92,22 @@ const createTask = (taskName) => {
 
 const enterCheck = (event) => {
   if (event.code === "Enter") {
-    event.preventDefault();
-    addTask();
+    if (event.target === taskNameInput) {
+      addTask();
+    } else if (event.target === taskModalInput) {
+      event.preventDefault();
+      changeTodo();
+    }
   }
 }
 
 const checkClick = (event) => {
   // Jeśli `event.target` ma jakieś klasy:
   if (event.target.classList.value !== "") {
-    // Sprawdzenie, czy najbliższy element `button` ma klasę "completed":
     if (event.target.closest("button").classList.contains("task-button--complete")) {
       toggleTaskStatus(event);
     } else if (event.target.closest("button").classList.contains("task-button--edit")) {
-      openModal(event);
-      console.log("Odpalam modal!");
+      editTask(event);
     } else if (event.target.closest("button").classList.contains("task-button--delete")) {
       deleteTask(event);
     }
@@ -93,17 +115,13 @@ const checkClick = (event) => {
 }
 
 const toggleTaskStatus = (event) => {
-  const taskText = event.target.closest(".task").querySelector(".task-text");
+  const taskText = event.target.closest(".task").firstElementChild;
   taskText.classList.toggle("task-text--completed");
 
-  taskText.classList.contains("task-text--completed") 
+  taskText.classList.contains("task-text--completed")
     ? event.target.closest("button").innerHTML = '<i class="fa-solid fa-rotate-left" aria-hidden="true"></i>' 
     : event.target.closest("button").innerHTML = '<i class="fa-solid fa-check" aria-hidden="true"></i>';
 }
-
-// const editTask = (event) => {
-
-// }
 
 const deleteTask = (event) => {
   const task = event.target.closest(".task");
@@ -135,25 +153,24 @@ const clearError = (input, error) => {
   error.style.display = "none";
 }
 
-const openModal = (event) => {
+const editTask = (event) => {
   taskModal.classList.add("task-modal--active");
 
-  taskModal.querySelector(".task-modal__button--accept").addEventListener("click", (event) => editTask(event));
-  taskModal.querySelector(".task-modal__button--cancel").addEventListener("click", closeModal);
+  const taskID = event.target.closest("li").id;
+  taskToEdit = document.getElementById(taskID);
+
+  taskModalInput.value = taskToEdit.firstElementChild.textContent;
 }
 
-const editTask = (event) => {
-  const taskModalInput = taskModal.querySelector(".task-modal__input");
-  const taskModalError = taskModal.querySelector(".error-message");
-  const newTaskName = taskModalInput.value;
-  
-  if (!newTaskName) {
-    displayError("Don't forget to put a task name!", taskModalInput, taskModalError);
-  } else if (newTaskName.length < taskModalInput.minLength || newTaskName.length > taskModalInput.maxLength) {
-    displayError(`Task name must be between ${taskModalInput.minLength} and ${taskModalInput.maxLength} characters!`, taskModalInput, taskModalError);
+const changeTodo = () => {
+  if (!taskModalInput.value) {
+    displayError("Don't forget to put a task name!", taskModalInput, taskModalErrorText);
+  } else if (taskModalInput.value.length < taskModalInput.minLength || taskModalInput.value.length > taskModalInput.maxLength) {
+    displayError(`Task name must be between ${taskModalInput.minLength} and ${taskModalInput.maxLength} characters!`, taskModalInput, taskModalErrorText);
   } else {
-    clearError(taskModalInput, taskModalError);
-    console.log(event.target);
+    taskToEdit.firstElementChild.textContent = taskModalInput.value;
+    clearError(taskModalInput, taskModalErrorText);
+    closeModal();
   }
 }
 
